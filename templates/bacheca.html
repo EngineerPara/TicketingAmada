@@ -1,0 +1,26 @@
+{% extends 'base.html'%}
+
+{% block title %}
+<title>Portale Amada: Bacheca</title>
+{%endblock%}
+
+{%block content%}
+<br/>
+<h5>
+  Pagina dedita alla condivisione di annunci.
+</h5>
+<hr>
+<h5>Vuoi scrivere un post che possono leggere tutti? <a href="{%url "post_creazione"%}">Prova qui<a></h5>
+  <br/><br/>
+{%for reparto in data%}
+<div class="card">
+    <div class="card-body">
+      <h5 class="card-title">{{reparto.titolo}}</h5>
+      <p class="card-text">{{reparto.descrizione}}</p>
+      <a href="/bacheca_details/{{reparto.pk}}" class="btn btn-danger">Vedi dettagli</a>
+    </div>
+</div>
+<br>
+{%endfor%}
+<br/>
+{%endblock%}

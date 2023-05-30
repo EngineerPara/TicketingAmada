@@ -1,0 +1,40 @@
+{%extends 'base.html'%}
+
+{%block title%}
+<title>Portale Amada: Ricezione Ticket</title>
+{%endblock%}
+
+{%block content%}
+<h5>
+  Tutti i ticket ricevuti dai vari dipartimenti.
+</h5>
+<br/><br/>
+{%for reparto in dati%}
+
+<!-- come i semafori -->
+<!-- border-warning => da accettare -->
+<!-- border-success => in corso -->
+<!-- border-danger  => chiuso -->
+{%if reparto.progress == "Non Accettato"%}
+<div class="card border-warning">
+
+{%elif reparto.progress == "In Corso"%}
+<div class="card border-success">
+
+{%else%}
+<div class="card border-danger">
+
+{%endif%}
+  <div class="card-header">
+    {{reparto.titolo}}
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">Lavoro da parte di {{reparto.reparto_richiedente}}</h5>
+    <p class="card-text">{{reparto.descrizione}}</p>
+    <a href="/dettagli/{{reparto.pk}}" class="btn btn-danger">Vedi dettagli</a>
+  </div>
+  </div>
+  <br/>
+{%endfor%}
+<br/>
+{%endblock%}

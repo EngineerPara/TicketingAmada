@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{%load crispy_forms_tags%}
+
+{%block title%}
+<title>Portale Amada: Registrazione</title>
+{%endblock%}
+
+{%block content%}
+<h5>
+    Crea un account per usufruire pienamente dei servizi offerti.
+</h5>
+<br/><br/>
+<form action="" method="POST" novalidate>
+    {% csrf_token %}
+    {{form|crispy}}
+    <br/><br/>
+    <center><input type="submit" value="invia" class="btn btn-danger"></center>
+</form>
+<h5>Hai già un account? <a href="{% url 'login'%}">Accedi da qui</a></h5>
+<br/><br/>
+{% if user.is_authenticated %} 
+<h5>Grazie per esserti registrato presso il nostro sito. 
+    In caso di domande o problemi durante il processo di registrazione, ti invitiamo a contattarci per ricevere assistenza immediata.</h5>
+{%else%}
+{%endif%}
+<br/>
+{%endblock%}

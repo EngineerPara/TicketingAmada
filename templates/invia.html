@@ -1,0 +1,36 @@
+{%extends 'base.html'%}
+{% load crispy_forms_tags %}
+
+
+{%block title%}
+<title>Portale Amada: Ticketing</title>
+{%endblock%}
+
+{%block content%}
+{% if user.is_authenticated %}
+    <h3>Benvenuto nella sezione Invia Ticket. In questa sezione puoi inviare un ticket al reparto di tuo interesse.
+        Compila il modulo con tutti i dati che seguono.
+    </h3>
+
+    <br/><br/>
+    <form action="" method="POST">
+        {% csrf_token %}
+        {% if form.errors %}
+        <div class="alert alert-error">
+            <ul>
+                {% for error in form.non_field_errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+        {{ form|crispy }}
+        <br/><br/>
+        <center><input type="submit" class="btn btn-danger" value="Invia" /></center>
+    </form>
+    <br/><br/>
+{%else%}
+<h1>Per accedere a questa sezione bisogna effettuare login o registrarsi. <a href="{%url 'registration'%}">Fai tutto qui</a></h1>
+{% endif%}
+<br/>
+{%endblock%}

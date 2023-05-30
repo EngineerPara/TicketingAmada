@@ -1,0 +1,24 @@
+{% extends 'base.html'%}
+{% load crispy_forms_tags %}
+{%block title%}
+<title>
+    Portale Amada: Login
+</title>
+{%endblock%}
+
+{% block content%}
+<h5>
+    Effettua il login per usufruire pienamente dei servizi.
+</h5><br/><br/>
+<form action="" method="post" novalidate>
+    {%csrf_token%}
+    {{form|crispy}}
+    <br/><br/>
+    <center><input type="submit" value="invia" class="btn btn-danger"></center>
+</form>
+<br/>
+<h5>Non hai ancora un account? <a href="{% url 'registration'%}">Registrati</a></h5>
+<h5>Hai dimenticato la password? <a href="{% url 'recupera_password'%}">Recuperala</a></h5>
+<h5>Logout? <a href="{% url 'logout'%}">Prova qui</a></h5>
+<br/>
+{%endblock%}

@@ -1,0 +1,36 @@
+{%extends 'base.html'%}
+
+{%block title%}
+<title>Portale Amada: Details</title>
+{%endblock%}
+
+{% block content%}
+<center><h2>{{obj.titolo}}</h2><center>
+    <br/>
+<h5>Data richiesta: {{obj.data_richiesta}} Avanzamento: {{obj.progress}}</h5>
+<h5>
+    Il seguente ticket mostra la richiesta da parte del collega {{obj.richiedente}} del reparto {{obj.reparto_richiedente}} verso il reparto 
+    {{obj.reparto_destinatario}}. Il seguente ticket ha una priorità: <b>{{ obj.priorità }}</b>. La data di evasione richiesta è: {{obj.data_evasione_richiesta}}
+    Ulteriori dettagli: <br/><br/>
+    {{obj.descrizione}}
+    <hr>
+    Note: <br/>
+    {{obj.note}}
+</h5>
+<br/>
+
+<style>
+    button{
+        margin-right:20vw;
+        
+    }
+</style>
+{% if obj.progress != "Chiuso" %}
+<a href="/modifica_ticket/{{obj.pk}}"><button class="btn btn-danger">Modifica Ticket</button></a>
+{%else%}
+{%endif%}
+{% if obj.progress == "Chiuso" %}
+<a href="/elimina_ticket/{{obj.pk}}"><button class="btn btn-danger">Elimina Ticket (Attenzione!)</button></a>
+{%else%}
+{%endif%}
+{%endblock%}

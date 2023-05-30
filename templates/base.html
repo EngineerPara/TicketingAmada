@@ -1,0 +1,74 @@
+{%load static%}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% block title%}
+    {% endblock %}
+    <link rel="icon" type="image/x-icon" href="{% static 'amada.ico' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <link href="{%static 'commons.css'%}" rel="stylesheet">
+  </head>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+      <nav class="navbar navbar-expand-lg bg-dark sticky-top" data-bs-theme="dark">
+        <div class="container-fluid">
+          <a href="https://www.amada.eu/">
+            <img src="{% static 'logo.jpg' %}" width="125" height="125"/>
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="btn btn-danger samelength" href="{%url 'bacheca'%}">Bacheca</a>
+              </li>
+              <li class="nav-item">
+                <a class="btn btn-danger samelength" href="{%url 'invia' %}">Invia Ticket</a>
+              </li>
+              <li class="nav-item">
+                <a class="btn btn-danger samelength" href="{%url 'post_creazione'%}">Scrivi Annuncio</a>
+              </li>
+              {%if user.is_authenticated%}
+              <li>
+                <a class="btn btn-danger samelength" href="{%url 'ricevi'%}">Ticket Ricevuti</a>
+              </li>
+              {%else%}
+              {%endif%}
+            </ul>
+            <hr class="divider">
+            {% if user.is_authenticated %}
+                <p class='text-white'>Benvenuto: {{ request.user }}</p>
+                {% else %}
+            {% endif %}
+            <a id="login-button-like" href="{% url 'login'%}">
+              <img src="{% static 'login.jpg' %}" width="45" height="45" class="m-3" alt="login"/>
+            </a>
+            <form class="d-flex" role="search" action="{% url 'cerca'%}">
+              <input class="form-control me-2" type="search" placeholder="Cerca nel Sito" aria-label="Search" name="q">
+              <button class="btn btn-danger" type="submit">Cerca</button>
+            </form>
+          </div>
+        </div>
+      </nav>
+    <!-- parte di pagina -->
+    <main style="margin-top: 58px;">
+        <div class="container pt-4">
+            <div class="container">
+                {% block content%}
+                {%endblock%}
+            </div>
+        </div>
+    </main>
+    <br/>
+    <br/>
+    <!--fine content-->
+    <footer class="text-center text-white" style="background-color: #f1f1f1; margin-top: auto; width: 100%;">
+        <div class="text-center text-dark p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+            © 2023 Copyright:
+            <a class="text-dark" href="https://www.amada.eu/">Amada Italia</a>
+        </div>
+    </footer>
+</body>
+</html>

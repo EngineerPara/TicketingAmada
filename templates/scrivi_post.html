@@ -1,0 +1,24 @@
+{%extends 'base.html'%}
+{%load crispy_forms_tags%}
+
+{%block title%}
+<title>Amada Portale: Scrivi Post</title>
+{%endblock%}
+{%block content%}
+{% if user.is_authenticated %}
+<h5>
+  Pagina dedita alla scrittura di un annuncio per la bacheca.
+  </h5>
+  <br/><br/>
+<form action="" method="post">
+    {% csrf_token %}
+    {{form|crispy}}
+    <br/><br/>
+    <center><input type="submit" class="btn btn-danger" value="Invia" /></center>
+</form>
+<br/>
+{%else%}
+<h1>Per accedere a questa sezione bisogna effettuare login o registrarsi. <a href="{%url 'login'%}">Fai tutto qui</a></h1>
+{% endif%}
+<br/>
+{%endblock%}

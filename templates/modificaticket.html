@@ -1,0 +1,17 @@
+{%extends 'base.html'%}
+{%load crispy_forms_tags%}
+{%block title%}
+<title>Portale Amada: Modifica Ticket</title>
+{%endblock%}
+
+{%block content%}
+<form method="post" action="">
+    {% csrf_token %}
+    {{form|crispy}}
+    <br/><br/>
+   <center> <input type="submit" class="btn btn-danger" value="invia"></center>
+    <br/><br/>
+</form>
+<br/><br/>
+
+{%endblock%}

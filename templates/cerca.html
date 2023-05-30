@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{%block title%}
+<title>Portale Amada: Sezione Cerca</title>
+{%endblock%}
+{%block content%}
+<h5>Benvenuto nella nostra pagina di ricerca. Utilizza il campo di ricerca per trovare le informazioni che stai cercando. 
+  Puoi inserire parole chiave per restringere i risultati della ricerca.
+  Risulta utile utilizzare termini chiave pertinenti al tuo argomento di interesse come il reparto richiedente.
+</h5>
+<br/><br/>
+{%for reparto in reparto_richiedente%}
+<div class="card">
+    <div class="card-header">
+      Task
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">Lavoro da parte di {{reparto.reparto_richiedente}}</h5>
+      <p class="card-text">{{reparto.descrizione}}</p>
+      <a href="/dettagli/{{reparto.pk}}" class="btn btn-danger">Vedi dettagli</a>
+    </div>
+  </div>
+{%endfor%}
+<br/>
+{%endblock%}
