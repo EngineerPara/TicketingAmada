@@ -13,7 +13,7 @@ class Invia(forms.Form):
 # )      
     titolo = forms.CharField()
     priorità = forms.ChoiceField(
-        choices=(('Basso','Basso'), ('Medio','Medio'), ('Urgenza','Urgenza'),)
+        choices=(('Basso','Basso'), ('Medio','Medio'), ('Urgente','Urgente'),)
     )
     data_evasione_richiesta = forms.DateField(
     widget=forms.TextInput(     
