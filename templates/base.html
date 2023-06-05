@@ -30,7 +30,7 @@
               <li class="nav-item">
                 <a class="btn btn-danger samelength" href="{%url 'post_creazione'%}">Scrivi Annuncio</a>
               </li>
-              {%if user.is_authenticated%}
+              {%if request.user.first_name == 'Logistica' %}
               <li>
                 <a class="btn btn-danger samelength" href="{%url 'ricevi'%}">Ticket Ricevuti</a>
               </li>
